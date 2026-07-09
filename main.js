@@ -3,11 +3,12 @@
    main.js
    ============================================================ */
 
-/* ── Navigation : toujours visible, même en descendant ─────── */
+/* ── Navigation : se cache en descendant, réapparaît en remontant ── */
 (function () {
     const navbar = document.getElementById("navbar");
+    if (!navbar) return;
+
     let lastScrollTop = 0;
-    let ticking = false;
 
     function handleNav() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -15,46 +16,60 @@
         if (scrollTop <= 10) {
             /* Tout en haut : toujours visible */
             navbar.classList.remove("nav-hidden");
+        } else if (scrollTop > lastScrollTop) {
+            /* On descend : on cache */
+            navbar.classList.add("nav-hidden");
         } else {
-            /* Partout ailleurs : toujours visible aussi */
+            /* On remonte : on montre */
             navbar.classList.remove("nav-hidden");
         }
 
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        ticking = false;
     }
 
+    let ticking = false;
     window.addEventListener("scroll", function () {
         if (!ticking) {
-            requestAnimationFrame(handleNav);
+            requestAnimationFrame(function () {
+                handleNav();
+                ticking = false;
+            });
             ticking = true;
         }
     }, { passive: true });
 })();
 
-/* ── Frise horizontale : drag-to-scroll ─────────────────────── */
+/* ── Apparition en douceur des blocs au scroll ───────────────
+   Amélioration progressive : le contenu est visible par défaut
+   (voir style.css). On ne masque les blocs que si tout se passe
+   bien ici, pour ne jamais risquer de contenu invisible. ───── */
 (function () {
-    const frise = document.querySelector(".esprit-frise");
-    if (!frise) return;
+    if (!("IntersectionObserver" in window)) return;
 
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    try {
+        const items = document.querySelectorAll(".reveal");
+        if (!items.length) return;
 
-    frise.addEventListener("mousedown", function (e) {
-        isDown = true;
-        startX = e.pageX - frise.offsetLeft;
-        scrollLeft = frise.scrollLeft;
-    });
+        items.forEach(el => el.classList.add("reveal-init"));
 
-    frise.addEventListener("mouseleave", function () { isDown = false; });
-    frise.addEventListener("mouseup",    function () { isDown = false; });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add("in-view"), index * 40);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: "0px 0px -60px 0px" });
 
-    frise.addEventListener("mousemove", function (e) {
-        if (!isDown) return;
-        e.preventDefault();
-        const x    = e.pageX - frise.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        frise.scrollLeft = scrollLeft - walk;
-    });
+        items.forEach(el => observer.observe(el));
+
+        /* Filet de sécurité : si un élément n'a jamais été détecté
+           (ex: page très courte, cas limite), on le révèle après 3s. */
+        setTimeout(() => {
+            document.querySelectorAll(".reveal-init:not(.in-view)")
+                .forEach(el => el.classList.add("in-view"));
+        }, 3000);
+    } catch (e) {
+        /* En cas de souci, on ne prend aucun risque : rien n'est masqué. */
+    }
 })();
