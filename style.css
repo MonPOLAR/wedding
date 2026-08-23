@@ -159,48 +159,52 @@ nav a:hover {
     to   { opacity: 1; transform: translateY(-8vh); }
 }
 
-/* Compte à rebours avant le mariage */
+/* Compte à rebours avant le mariage — grand format, même typo que les prénoms */
 .countdown {
     display: flex;
-    align-items: flex-start;
+    align-items: baseline;
     justify-content: center;
-    gap: 10px;
-    margin-top: 30px;
-    flex-wrap: wrap;
+    gap: clamp(10px, 2.5vw, 34px);
+    margin-top: 34px;
+    flex-wrap: nowrap;
 }
 
 .countdown-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 52px;
+    min-width: 0;
 }
 
 .countdown-number {
     font-family: 'Cinzel', serif;
-    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    font-weight: 400;
+    font-size: clamp(1.6rem, 6.5vw, 4.6rem);
+    letter-spacing: 2px;
     color: #fff;
-    text-shadow: 0 2px 14px rgba(0,0,0,0.35);
+    text-shadow: 0 2px 18px rgba(0,0,0,0.35);
     line-height: 1;
     font-variant-numeric: tabular-nums;
+    white-space: nowrap;
 }
 
 .countdown-label {
-    font-family: 'Lato', sans-serif;
-    font-size: 0.62rem;
-    letter-spacing: 2px;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.5rem, 1.3vw, 0.8rem);
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: #f6f1e6;
     opacity: 0.85;
-    margin-top: 6px;
+    margin-top: 10px;
+    white-space: nowrap;
 }
 
 .countdown-sep {
     font-family: 'Cinzel', serif;
-    font-size: clamp(1.3rem, 3.5vw, 2rem);
-    color: rgba(255,255,255,0.6);
+    font-size: clamp(1.3rem, 5.5vw, 3.6rem);
+    color: rgba(255,255,255,0.5);
     line-height: 1;
-    padding-top: 2px;
+    align-self: flex-start;
 }
 
 .countdown-ended {
@@ -378,8 +382,8 @@ nav a:hover {
 /* ── COULEURS AUTORISÉES ────────────────────────────────────── */
 .couleurs-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 30px 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 34px 24px;
     max-width: 900px;
     margin: 0 auto;
 }
@@ -393,8 +397,8 @@ nav a:hover {
 
 .swatch-color {
     width: 100%;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
+    aspect-ratio: 4 / 3;
+    border-radius: 6px;
     box-shadow: 0 6px 16px rgba(74, 59, 46, 0.18), inset 0 0 0 1px rgba(255,255,255,0.4);
     transition: transform 0.3s ease;
 }
@@ -432,7 +436,7 @@ nav a:hover {
 
 .programme-item {
     position: relative;
-    padding-bottom: 38px;
+    padding-bottom: 58px;
 }
 
 .programme-item:last-child { padding-bottom: 0; }
@@ -762,12 +766,11 @@ footer {
     .esprit-duo-paysage { grid-template-columns: 1fr; }
     .paysage-item { height: 240px; }
 
-    .couleurs-grid { grid-template-columns: repeat(3, 1fr); gap: 26px 16px; }
+    .couleurs-grid { grid-template-columns: repeat(2, 1fr); gap: 26px 16px; }
 
     .mc-grid { grid-template-columns: 1fr; }
     .acces-grid { grid-template-columns: 1fr; gap: 32px; }
-    .countdown { gap: 6px; }
-    .countdown-item { min-width: 44px; }
+    .countdown { gap: 8px; }
 
     .hero-content { padding: 38px 30px; }
 
@@ -776,8 +779,4 @@ footer {
         font-size: 0.68rem;
         letter-spacing: 1.2px;
     }
-}
-
-@media (max-width: 480px) {
-    .couleurs-grid { grid-template-columns: repeat(2, 1fr); }
 }
