@@ -10,7 +10,6 @@
     --olive:         #8A9A7A;
     --olive-dark:    #707C63;
     --terracotta:    #B86040;
-    --brique:        #C0583A;
     --nude:          #C8A890;
     --bleu-ardoise:  #5F7885;
     --bleu-gris:     #A7BAC7;
@@ -158,6 +157,59 @@ nav a:hover {
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(-2vh); }
     to   { opacity: 1; transform: translateY(-8vh); }
+}
+
+/* Compte à rebours avant le mariage */
+.countdown {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 52px;
+}
+
+.countdown-number {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    color: #fff;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.35);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.countdown-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #f6f1e6;
+    opacity: 0.85;
+    margin-top: 6px;
+}
+
+.countdown-sep {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.3rem, 3.5vw, 2rem);
+    color: rgba(255,255,255,0.6);
+    line-height: 1;
+    padding-top: 2px;
+}
+
+.countdown-ended {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: #fff;
+    margin: 30px 0 0;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.3);
 }
 
 /* Indicateur de scroll */
@@ -358,6 +410,238 @@ nav a:hover {
     opacity: 0.8;
 }
 
+/* ── PROGRAMME ──────────────────────────────────────────────── */
+.programme-timeline {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: left;
+    position: relative;
+    padding-left: 30px;
+}
+
+.programme-timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    bottom: 6px;
+    width: 1px;
+    background: var(--terracotta);
+    opacity: 0.35;
+}
+
+.programme-item {
+    position: relative;
+    padding-bottom: 38px;
+}
+
+.programme-item:last-child { padding-bottom: 0; }
+
+.programme-item::before {
+    content: '';
+    position: absolute;
+    left: -30px;
+    top: 6px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    box-shadow: 0 0 0 4px var(--creme);
+}
+
+.programme-time {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: var(--terracotta);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.programme-label {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    margin: 0 0 4px;
+}
+
+.programme-desc {
+    font-weight: 300;
+    opacity: 0.85;
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.programme-note {
+    text-align: center;
+    font-size: 0.78rem;
+    opacity: 0.6;
+    margin-top: 40px;
+    font-style: italic;
+}
+
+/* ── MAÎTRES DE CÉRÉMONIE ───────────────────────────────────── */
+.mc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.mc-card {
+    background-color: var(--beige-carte);
+    border: 1px solid rgba(184, 96, 64, 0.12);
+    border-radius: 3px;
+    padding: 42px 28px;
+}
+
+.mc-role {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 14px;
+}
+
+.mc-name {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    margin: 0 0 14px;
+}
+
+.mc-contact {
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 2;
+    opacity: 0.85;
+}
+
+.mc-contact a {
+    color: var(--brun-texte);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(74,59,46,0.3);
+}
+
+.mc-contact a:hover { color: var(--terracotta); border-color: var(--terracotta); }
+
+.mc-note {
+    text-align: center;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-top: 36px;
+    font-style: italic;
+}
+
+/* ── ACCÈS & HÉBERGEMENT ────────────────────────────────────── */
+.acces-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    text-align: left;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.acces-block h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin: 0 0 16px;
+}
+
+.acces-block p {
+    font-weight: 300;
+    line-height: 1.8;
+    font-size: 0.92rem;
+    opacity: 0.88;
+    margin: 0 0 10px;
+}
+
+.acces-block ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.acces-block li {
+    font-weight: 300;
+    line-height: 1.8;
+    font-size: 0.92rem;
+    opacity: 0.88;
+}
+
+.acces-address {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+}
+
+.link-maps {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    text-decoration: none;
+    border-bottom: 1px solid var(--terracotta);
+    padding-bottom: 2px;
+}
+
+.link-maps:hover { color: var(--olive-dark); border-color: var(--olive-dark); }
+
+/* ── FAQ ────────────────────────────────────────────────────── */
+.faq-list {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(184, 96, 64, 0.2);
+    padding: 22px 0;
+}
+
+.faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+    content: '+';
+    font-family: 'Lato', sans-serif;
+    font-style: normal;
+    font-size: 1.3rem;
+    color: var(--terracotta);
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.faq-item[open] summary::after { transform: rotate(45deg); }
+
+.faq-answer {
+    margin: 16px 0 0;
+    font-weight: 300;
+    line-height: 1.8;
+    opacity: 0.85;
+    font-size: 0.95rem;
+}
+
 /* ── LISTE DE MARIAGE ───────────────────────────────────────── */
 .card-donation {
     background-color: var(--beige-carte);
@@ -479,6 +763,11 @@ footer {
     .paysage-item { height: 240px; }
 
     .couleurs-grid { grid-template-columns: repeat(3, 1fr); gap: 26px 16px; }
+
+    .mc-grid { grid-template-columns: 1fr; }
+    .acces-grid { grid-template-columns: 1fr; gap: 32px; }
+    .countdown { gap: 6px; }
+    .countdown-item { min-width: 44px; }
 
     .hero-content { padding: 38px 30px; }
 
