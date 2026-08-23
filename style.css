@@ -605,45 +605,52 @@ nav a:hover {
     max-width: 720px;
     margin: 0 auto;
     text-align: left;
+    border-top: 1px solid rgba(74, 59, 46, 0.15);
 }
 
 .faq-item {
-    border-bottom: 1px solid rgba(184, 96, 64, 0.2);
-    padding: 22px 0;
+    border-bottom: 1px solid rgba(74, 59, 46, 0.15);
+    width: 100%;
 }
 
 .faq-item summary {
     cursor: pointer;
     list-style: none;
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
+    width: 100%;
+    padding: 24px 2px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 1.02rem;
+    color: var(--brun-texte);
 }
 
 .faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::marker { content: ''; }
 
 .faq-item summary::after {
-    content: '+';
+    content: '›';
     font-family: 'Lato', sans-serif;
-    font-style: normal;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    font-weight: 300;
     color: var(--terracotta);
     flex-shrink: 0;
+    line-height: 1;
     transition: transform 0.3s ease;
 }
 
-.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item[open] summary::after { transform: rotate(90deg); }
 
 .faq-answer {
-    margin: 16px 0 0;
+    margin: 0;
+    padding: 0 2px 26px;
     font-weight: 300;
     line-height: 1.8;
     opacity: 0.85;
-    font-size: 0.95rem;
+    font-size: 0.94rem;
 }
 
 /* ── LISTE DE MARIAGE ───────────────────────────────────────── */
