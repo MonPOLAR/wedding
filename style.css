@@ -746,6 +746,34 @@ footer {
     font-family: 'Lato', sans-serif;
 }
 
+/* ── PAGE MAIRIE (mariage civil, accès par QR code) ─────────── */
+.hero--mairie {
+    background-image: url('pictures/fillinges.webp');
+}
+
+.hero-date {
+    font-family: 'Playfair Display', serif !important;
+    font-style: italic;
+    font-size: 1.05rem !important;
+    margin-top: 16px !important;
+    opacity: 0.95;
+}
+
+.lien-pruzilly {
+    background-color: var(--beige-carte);
+    border: 1px solid rgba(184, 96, 64, 0.12);
+    border-radius: 3px;
+    padding: 60px 30px;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.lien-pruzilly p {
+    font-weight: 300;
+    line-height: 1.8;
+    margin: 0 0 28px;
+}
+
 /* ── ANIMATIONS AU SCROLL ─────────────────────────────────────
    Amélioration progressive : le contenu est visible par défaut.
    C'est uniquement si le JS charge correctement qu'on ajoute
